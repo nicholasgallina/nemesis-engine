@@ -2,6 +2,7 @@
 
 #include "nre_window.hpp"
 #include "nre_pipeline.hpp"
+#include "nre_device.hpp"
 
 namespace nre
 {
@@ -16,6 +17,8 @@ namespace nre
 
     private:
         NreWindow NreWindow{WIDTH, HEIGHT, "Nemesis Rendering Engine"};
-        NrePipeline NrePipeline{"shaders/simple_shader.vert.spv", "shaders/simple_shader.frag.spv"};
+        NreDevice nreDevice{NreWindow};
+        NrePipeline NrePipeline{nreDevice, "shaders/simple_shader.vert.spv", "shaders/simple_shader.frag.spv", NrePipeline::defaultPipelineConfigInfo(WIDTH, HEIGHT)};
     };
+
 }

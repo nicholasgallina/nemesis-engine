@@ -1,5 +1,8 @@
 #include "nre_window.hpp"
 
+// std
+#include <stdexcept>
+
 namespace nre
 {
 
@@ -16,6 +19,14 @@ namespace nre
         glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
         window = glfwCreateWindow(width, height, windowName.c_str(), nullptr, nullptr);
+    }
+
+    void NreWindow::createWindowSurface(VkInstance instance, VkSurfaceKHR *surface)
+    {
+        if (glfwCreateWindowSurface(instance, window, nullptr, surface) != VK_SUCCESS)
+        {
+            throw std::runtime_error("Failed to create window surface");
+        }
     }
 
     NreWindow::~NreWindow()
