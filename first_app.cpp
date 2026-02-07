@@ -9,6 +9,7 @@ namespace nre
 
     FirstApp::FirstApp()
     {
+        loadModels();
         createPipelineLayout();
         createPipeline();
         createCommandBuffers();
@@ -29,6 +30,40 @@ namespace nre
 
         // CPU will block until all GPU operations have been completed
         vkDeviceWaitIdle(nreDevice.device());
+    }
+
+    void sierpinksi(glm::vec2 a, glm::vec2 b, glm::vec2 c, int depth, std::vector<NreModel::Vertex> &vertices)
+    {
+        if (depth == 0)
+        {
+            vertices.push_back({a});
+            vertices.push_back({b});
+            vertices.push_back({c});
+        }
+        else
+        {
+            glm::vec2 ab = (a + b) / 2.0f;
+            glm::vec2 bc = (b + c) / 2.0f;
+            glm::vec2 ca = (c + a) / 2.0f;
+
+            sierpinksi(a, ab, ca, depth - 1, vertices);
+            sierpinksi(b, ab, bc, depth - 1, vertices);
+            sierpinksi(c, ca, bc, depth - 1, vertices);
+        };
+    }
+
+    void FirstApp::loadModels()
+    {
+        std::vector<NreModel::Vertex> vertices{};
+
+        sierpinksi(
+            {0.0f, -0.5f},
+            {0.5f, 0.5f},
+            {-0.5f, 0.5f},
+            10,
+            vertices);
+
+        nreModel = std::make_unique<NreModel>(nreDevice, vertices);
     }
 
     void FirstApp::createPipelineLayout()
@@ -100,7 +135,8 @@ namespace nre
             vkCmdBeginRenderPass(commandBuffers[i], &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
 
             nrePipeline->bind(commandBuffers[i]);
-            vkCmdDraw(commandBuffers[i], 3, 1, 0, 0);
+            nreModel->bind(commandBuffers[i]);
+            nreModel->draw(commandBuffers[i]);
 
             vkCmdEndRenderPass(commandBuffers[i]);
             if (vkEndCommandBuffer(commandBuffers[i]) != VK_SUCCESS)

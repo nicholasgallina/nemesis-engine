@@ -4,6 +4,7 @@
 #include "nre_pipeline.hpp"
 #include "nre_device.hpp"
 #include "nre_swap_chain.hpp"
+#include "nre_model.hpp"
 
 // std
 #include <memory>
@@ -27,6 +28,7 @@ namespace nre
         void run();
 
     private:
+        void loadModels();
         void createPipelineLayout();
         void createPipeline();
         void createCommandBuffers();
@@ -38,6 +40,7 @@ namespace nre
         std::unique_ptr<NrePipeline> nrePipeline;
         VkPipelineLayout pipelineLayout;
         std::vector<VkCommandBuffer> commandBuffers;
+        std::unique_ptr<NreModel> nreModel;
     };
 
 }
