@@ -3,6 +3,11 @@
 #include "nre_window.hpp"
 #include "nre_pipeline.hpp"
 #include "nre_device.hpp"
+#include "nre_swap_chain.hpp"
+
+// std
+#include <memory>
+#include <vector>
 
 namespace nre
 {
@@ -13,12 +18,26 @@ namespace nre
         static constexpr int WIDTH = 800;
         static constexpr int HEIGHT = 600;
 
+        FirstApp();
+        ~FirstApp();
+
+        FirstApp(const NreWindow &) = delete;
+        FirstApp &operator=(const NreWindow &) = delete;
+
         void run();
 
     private:
-        NreWindow NreWindow{WIDTH, HEIGHT, "Nemesis Rendering Engine"};
+        void createPipelineLayout();
+        void createPipeline();
+        void createCommandBuffers();
+        void drawFrame();
+
+        NreWindow NreWindow{WIDTH, HEIGHT, "Nebula Rendering Engine"};
         NreDevice nreDevice{NreWindow};
-        NrePipeline NrePipeline{nreDevice, "shaders/simple_shader.vert.spv", "shaders/simple_shader.frag.spv", NrePipeline::defaultPipelineConfigInfo(WIDTH, HEIGHT)};
+        NreSwapChain nreSwapChain{nreDevice, NreWindow.getExtent()};
+        std::unique_ptr<NrePipeline> nrePipeline;
+        VkPipelineLayout pipelineLayout;
+        std::vector<VkCommandBuffer> commandBuffers;
     };
 
 }
