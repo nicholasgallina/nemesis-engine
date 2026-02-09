@@ -4,6 +4,15 @@
 #include <stdexcept>
 #include <array>
 
+namespace colors
+{
+    const glm::vec3 RED = {1.0f, 0.0f, 0.0f};
+    const glm::vec3 GREEN = {0.0f, 1.0f, 0.0f};
+    const glm::vec3 BLUE = {0.0f, 0.0f, 1.0f};
+    const glm::vec3 YELLOW = {1.0f, 1.0f, 1.0f};
+    const glm::vec3 PURPLE = {0.5f, 0.0f, 0.5f};
+}
+
 namespace nre
 {
 
@@ -32,6 +41,31 @@ namespace nre
         vkDeviceWaitIdle(nreDevice.device());
     }
 
+    void sierpinksi(glm::vec2 a, glm::vec3 cA, glm::vec2 b, glm::vec3 cB, glm::vec2 c, glm::vec3 cC, int depth, std::vector<NreModel::Vertex> &vertices)
+    {
+
+        if (depth == 0)
+        {
+            vertices.push_back({a, cA});
+            vertices.push_back({b, cB});
+            vertices.push_back({c, cC});
+        }
+        else
+        {
+            glm::vec2 ab = (a + b) / 2.0f;
+            glm::vec2 bc = (b + c) / 2.0f;
+            glm::vec2 ca = (c + a) / 2.0f;
+
+            glm::vec3 cAB = (cA + cB) / 2.0f;
+            glm::vec3 cBC = (cB + cC) / 2.0f;
+            glm::vec3 cCA = (cC + cA) / 2.0f;
+
+            sierpinksi(a, cA, ab, cAB, ca, cCA, depth - 1, vertices);
+            sierpinksi(b, cB, ab, cAB, bc, cBC, depth - 1, vertices);
+            sierpinksi(c, cC, ca, cCA, bc, cBC, depth - 1, vertices);
+        }
+    }
+
     void sierpinksi(glm::vec2 a, glm::vec2 b, glm::vec2 c, int depth, std::vector<NreModel::Vertex> &vertices)
     {
         if (depth == 0)
@@ -54,15 +88,10 @@ namespace nre
 
     void FirstApp::loadModels()
     {
-        std::vector<NreModel::Vertex> vertices{};
-
-        sierpinksi(
-            {0.0f, -0.5f},
-            {0.5f, 0.5f},
-            {-0.5f, 0.5f},
-            10,
-            vertices);
-
+        std::vector<NreModel::Vertex> vertices{
+            {{0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}},
+            {{0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}},
+            {{-0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}}};
         nreModel = std::make_unique<NreModel>(nreDevice, vertices);
     }
 
