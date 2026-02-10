@@ -32,11 +32,14 @@ namespace nre
         void createPipelineLayout();
         void createPipeline();
         void createCommandBuffers();
+        void freeCommandBuffers();
         void drawFrame();
+        void recreateSwapchain();
+        void recordCommandBuffer(int imageIndex);
 
         NreWindow NreWindow{WIDTH, HEIGHT, "Nebula Rendering Engine"};
         NreDevice nreDevice{NreWindow};
-        NreSwapChain nreSwapChain{nreDevice, NreWindow.getExtent()};
+        std::unique_ptr<NreSwapChain> nreSwapChain;
         std::unique_ptr<NrePipeline> nrePipeline;
         VkPipelineLayout pipelineLayout;
         std::vector<VkCommandBuffer> commandBuffers;

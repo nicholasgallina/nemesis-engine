@@ -41,7 +41,7 @@ namespace nre
 
         // Not copyable or movable
         NreDevice(const NreDevice &) = delete;
-        void operator=(const NreDevice &) = delete;
+        NreDevice &operator=(const NreDevice &) = delete;
         NreDevice(NreDevice &&) = delete;
         NreDevice &operator=(NreDevice &&) = delete;
 
