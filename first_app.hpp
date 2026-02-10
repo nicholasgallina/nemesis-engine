@@ -4,7 +4,7 @@
 #include "nre_pipeline.hpp"
 #include "nre_device.hpp"
 #include "nre_swap_chain.hpp"
-#include "nre_model.hpp"
+#include "nre_game_object.hpp"
 
 // std
 #include <memory>
@@ -28,7 +28,7 @@ namespace nre
         void run();
 
     private:
-        void loadModels();
+        void loadGameObjects();
         void createPipelineLayout();
         void createPipeline();
         void createCommandBuffers();
@@ -36,6 +36,7 @@ namespace nre
         void drawFrame();
         void recreateSwapchain();
         void recordCommandBuffer(int imageIndex);
+        void renderGameObjects(VkCommandBuffer commandBuffer);
 
         NreWindow NreWindow{WIDTH, HEIGHT, "Nebula Rendering Engine"};
         NreDevice nreDevice{NreWindow};
@@ -43,7 +44,7 @@ namespace nre
         std::unique_ptr<NrePipeline> nrePipeline;
         VkPipelineLayout pipelineLayout;
         std::vector<VkCommandBuffer> commandBuffers;
-        std::unique_ptr<NreModel> nreModel;
+        std::vector<NreGameObject> gameObjects;
     };
 
 }
