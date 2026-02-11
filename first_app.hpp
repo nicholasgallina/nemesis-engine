@@ -1,10 +1,9 @@
 #pragma once
 
 #include "nre_window.hpp"
-#include "nre_pipeline.hpp"
 #include "nre_device.hpp"
-#include "nre_swap_chain.hpp"
 #include "nre_game_object.hpp"
+#include "nre_renderer.hpp"
 
 // std
 #include <memory>
@@ -29,21 +28,10 @@ namespace nre
 
     private:
         void loadGameObjects();
-        void createPipelineLayout();
-        void createPipeline();
-        void createCommandBuffers();
-        void freeCommandBuffers();
-        void drawFrame();
-        void recreateSwapchain();
-        void recordCommandBuffer(int imageIndex);
-        void renderGameObjects(VkCommandBuffer commandBuffer);
 
-        NreWindow NreWindow{WIDTH, HEIGHT, "Nebula Rendering Engine"};
-        NreDevice nreDevice{NreWindow};
-        std::unique_ptr<NreSwapChain> nreSwapChain;
-        std::unique_ptr<NrePipeline> nrePipeline;
-        VkPipelineLayout pipelineLayout;
-        std::vector<VkCommandBuffer> commandBuffers;
+        NreWindow nreWindow{WIDTH, HEIGHT, "Nebula Rendering Engine"};
+        NreDevice nreDevice{nreWindow};
+        NreRenderer nreRenderer{nreWindow, nreDevice};
         std::vector<NreGameObject> gameObjects;
     };
 
