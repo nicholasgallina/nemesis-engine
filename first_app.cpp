@@ -56,66 +56,74 @@ namespace nre
         vkDeviceWaitIdle(nreDevice.device());
     }
 
-    void sierpinksi(glm::vec2 a, glm::vec3 cA, glm::vec2 b, glm::vec3 cB, glm::vec2 c, glm::vec3 cC, int depth, std::vector<NreModel::Vertex> &vertices)
+    // temporary helper function, creates a 1x1x1 cube centered at offset
+    std::unique_ptr<NreModel> createCubeModel(NreDevice &device, glm::vec3 offset)
     {
+        std::vector<NreModel::Vertex> vertices{
 
-        if (depth == 0)
-        {
-            vertices.push_back({a, cA});
-            vertices.push_back({b, cB});
-            vertices.push_back({c, cC});
-        }
-        else
-        {
-            glm::vec2 ab = (a + b) / 2.0f;
-            glm::vec2 bc = (b + c) / 2.0f;
-            glm::vec2 ca = (c + a) / 2.0f;
+            // left face (white)
+            {{-.5f, -.5f, -.5f}, {.9f, .9f, .9f}},
+            {{-.5f, .5f, .5f}, {.9f, .9f, .9f}},
+            {{-.5f, -.5f, .5f}, {.9f, .9f, .9f}},
+            {{-.5f, -.5f, -.5f}, {.9f, .9f, .9f}},
+            {{-.5f, .5f, -.5f}, {.9f, .9f, .9f}},
+            {{-.5f, .5f, .5f}, {.9f, .9f, .9f}},
 
-            glm::vec3 cAB = (cA + cB) / 2.0f;
-            glm::vec3 cBC = (cB + cC) / 2.0f;
-            glm::vec3 cCA = (cC + cA) / 2.0f;
+            // right face (yellow)
+            {{.5f, -.5f, -.5f}, {.8f, .8f, .1f}},
+            {{.5f, .5f, .5f}, {.8f, .8f, .1f}},
+            {{.5f, -.5f, .5f}, {.8f, .8f, .1f}},
+            {{.5f, -.5f, -.5f}, {.8f, .8f, .1f}},
+            {{.5f, .5f, -.5f}, {.8f, .8f, .1f}},
+            {{.5f, .5f, .5f}, {.8f, .8f, .1f}},
 
-            sierpinksi(a, cA, ab, cAB, ca, cCA, depth - 1, vertices);
-            sierpinksi(b, cB, ab, cAB, bc, cBC, depth - 1, vertices);
-            sierpinksi(c, cC, ca, cCA, bc, cBC, depth - 1, vertices);
-        }
-    }
+            // top face (orange, remember y axis points down)
+            {{-.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
+            {{.5f, -.5f, .5f}, {.9f, .6f, .1f}},
+            {{-.5f, -.5f, .5f}, {.9f, .6f, .1f}},
+            {{-.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
+            {{.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
+            {{.5f, -.5f, .5f}, {.9f, .6f, .1f}},
 
-    void sierpinksi(glm::vec2 a, glm::vec2 b, glm::vec2 c, int depth, std::vector<NreModel::Vertex> &vertices)
-    {
-        if (depth == 0)
-        {
-            vertices.push_back({a});
-            vertices.push_back({b});
-            vertices.push_back({c});
-        }
-        else
-        {
-            glm::vec2 ab = (a + b) / 2.0f;
-            glm::vec2 bc = (b + c) / 2.0f;
-            glm::vec2 ca = (c + a) / 2.0f;
+            // bottom face (red)
+            {{-.5f, .5f, -.5f}, {.8f, .1f, .1f}},
+            {{.5f, .5f, .5f}, {.8f, .1f, .1f}},
+            {{-.5f, .5f, .5f}, {.8f, .1f, .1f}},
+            {{-.5f, .5f, -.5f}, {.8f, .1f, .1f}},
+            {{.5f, .5f, -.5f}, {.8f, .1f, .1f}},
+            {{.5f, .5f, .5f}, {.8f, .1f, .1f}},
 
-            sierpinksi(a, ab, ca, depth - 1, vertices);
-            sierpinksi(b, ab, bc, depth - 1, vertices);
-            sierpinksi(c, ca, bc, depth - 1, vertices);
+            // nose face (blue)
+            {{-.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
+            {{.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
+            {{-.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
+            {{-.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
+            {{.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
+            {{.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
+
+            // tail face (green)
+            {{-.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
+            {{.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
+            {{-.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
+            {{-.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
+            {{.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
+            {{.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
+
         };
+        for (auto &v : vertices)
+        {
+            v.position += offset;
+        }
+        return std::make_unique<NreModel>(device, vertices);
     }
 
     void FirstApp::loadGameObjects()
     {
-        std::vector<NreModel::Vertex> vertices{
-            {{0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}},
-            {{0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}},
-            {{-0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}}};
-        auto nreModel = std::make_shared<NreModel>(nreDevice, vertices);
-
-        auto triangle = NreGameObject::createGameObject();
-        triangle.model = nreModel; // todo: check
-        triangle.color = {.1f, .8f, .1f};
-        triangle.transform2d.translation.x = .2f;
-        triangle.transform2d.scale = {2.f, .5f};
-        triangle.transform2d.rotation = .25f * glm::two_pi<float>();
-
-        gameObjects.push_back(std::move(triangle));
+        std::shared_ptr<NreModel> nreModel = createCubeModel(nreDevice, {.0f, .0f, .0f});
+        auto cube = NreGameObject::createGameObject();
+        cube.model = nreModel;
+        cube.transform.translation = {.0, .0f, .5f};
+        cube.transform.scale = {.5f, .5f, .5f};
+        gameObjects.push_back(std::move(cube));
     };
 } // namspace nre
