@@ -24,7 +24,14 @@ namespace nre
             static std::vector<VkVertexInputBindingDescription> getBindingDescriptions();
             static std::vector<VkVertexInputAttributeDescription> getAttributeDescriptions();
         };
-        NreModel(NreDevice &device, const std::vector<Vertex> &vertices);
+
+        struct Builder
+        {
+            std::vector<Vertex> vertices{};
+            std::vector<uint32_t> indices{};
+        };
+
+        NreModel(NreDevice &device, const NreModel::Builder &builder);
         ~NreModel();
 
         NreModel(const NreModel &) = delete;
@@ -35,10 +42,17 @@ namespace nre
 
     private:
         void createVertexBuffers(const std::vector<Vertex> &vertices);
+        void createIndexBuffers(const std::vector<uint32_t> &indices);
 
         NreDevice &nreDevice;
+
         VkBuffer vertexBuffer;
         VkDeviceMemory vertexBufferMemory;
         uint32_t vertexCount;
+
+        bool hasIndexBuffer = false;
+        VkBuffer indexBuffer;
+        VkDeviceMemory indexBufferMemory;
+        uint32_t indexCount;
     };
 } // namespace nre
