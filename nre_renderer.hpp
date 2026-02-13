@@ -22,6 +22,7 @@ namespace nre
         NreRenderer &operator=(const NreWindow &) = delete;
 
         VkRenderPass getSwapChainRenderPass() const { return nreSwapChain->getRenderPass(); }
+        float getAspectRatio() const { return nreSwapChain->extentAspectRatio(); }
 
         bool isFrameInProgress() const { return isFrameStarted; }
 
