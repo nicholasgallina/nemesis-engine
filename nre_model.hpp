@@ -7,6 +7,7 @@
 #include <glm/glm.hpp>
 
 // std
+#include <memory>
 #include <vector>
 
 namespace nre
@@ -20,15 +21,26 @@ namespace nre
         {
             glm::vec3 position;
             glm::vec3 color;
+            glm::vec3 normal{};
+
+            // shorthand for two-dimensional texture coordinates
+            glm::vec2 uv{};
 
             static std::vector<VkVertexInputBindingDescription> getBindingDescriptions();
             static std::vector<VkVertexInputAttributeDescription> getAttributeDescriptions();
+
+            bool operator==(const Vertex &other) const
+            {
+                return position == other.position && color == other.color && normal == other.normal && uv == other.uv;
+            }
         };
 
         struct Builder
         {
             std::vector<Vertex> vertices{};
             std::vector<uint32_t> indices{};
+
+            void loadModel(const std::string &filepath);
         };
 
         NreModel(NreDevice &device, const NreModel::Builder &builder);
@@ -36,6 +48,8 @@ namespace nre
 
         NreModel(const NreModel &) = delete;
         NreModel &operator=(const NreModel &) = delete;
+
+        static std::unique_ptr<NreModel> createModelFromFile(NreDevice &device, const std::string &filepath);
 
         void bind(VkCommandBuffer commandBuffer);
         void draw(VkCommandBuffer commandBuffer);

@@ -1,0 +1,6 @@
+.env
+a.out
+*.spv
+.DS_STORE
+.vscode
+models/

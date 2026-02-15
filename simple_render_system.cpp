@@ -25,8 +25,7 @@ namespace nre
     {
         // identity matrix
         glm::mat4 transform{1.f};
-        // offset now baked into transform thanks to homogenous coordinates
-        alignas(16) glm::vec3 color;
+        glm::mat4 normalMatrix{1.f};
     };
 
     SimpleRenderSystem::SimpleRenderSystem(NreDevice &device, VkRenderPass renderPass) : nreDevice{device}
@@ -89,8 +88,9 @@ namespace nre
         {
 
             SimplePushConstantData push{};
-            push.color = obj.color;
-            push.transform = projectionView * obj.transform.mat4();
+            auto modelMatrix = obj.transform.mat4();
+            push.transform = projectionView * modelMatrix;
+            push.normalMatrix = obj.transform.normalMatrix();
 
             vkCmdPushConstants(commandBuffer, pipelineLayout, VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof(SimplePushConstantData), &push);
             obj.model->bind(commandBuffer);

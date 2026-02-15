@@ -7,7 +7,8 @@
                 "/opt/homebrew/include",
                 "/opt/homebrew/opt/glm/include",
                 "/opt/homebrew/opt/glfw/include",
-                "/Users/nicholasgallina/VulkanSDK/1.4.341.0/macOS/include"
+                "/Users/nicholasgallina/VulkanSDK/1.4.341.0/macOS/include",
+                "/Users/nicholasgallina/Code/libs/tinyobjloader"
             ],
             "macFrameworkPath": [
                 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
