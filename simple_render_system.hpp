@@ -4,6 +4,7 @@
 #include "nre_pipeline.hpp"
 #include "nre_device.hpp"
 #include "nre_game_object.hpp"
+#include "nre_frame_info.hpp"
 
 // std
 #include <memory>
@@ -21,7 +22,7 @@ namespace nre
         SimpleRenderSystem(const NreWindow &) = delete;
         SimpleRenderSystem &operator=(const NreWindow &) = delete;
 
-        void renderGameObjects(VkCommandBuffer commandBuffer, std::vector<NreGameObject> &gameObjects, const NreCamera &camera);
+        void renderGameObjects(FrameInfo &frameInfo, std::vector<NreGameObject> &gameObjects);
 
     private:
         void createPipelineLayout();

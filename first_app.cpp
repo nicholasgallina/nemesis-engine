@@ -3,6 +3,7 @@
 #include "keyboard_movement_controller.hpp"
 #include "nre_camera.hpp"
 #include "simple_render_system.hpp"
+#include "nre_buffer.hpp"
 
 #define GLM_FORCE_RADIANS // no matter the system, GLM expects radians
 #define GLM_FORCE_DEPTH_ZERO_TO_ONE
@@ -13,9 +14,16 @@
 #include <stdexcept>
 #include <array>
 #include <chrono>
+#include <numeric>
 
 namespace nre
 {
+
+    struct GlobalUbo
+    {
+        glm::mat4 projectionView{1.f};
+        glm::vec3 lightDirection = glm::normalize(glm::vec3{1.f, -3.f, -1.f});
+    };
 
     FirstApp::FirstApp()
     {
@@ -29,6 +37,18 @@ namespace nre
     // game loop
     void FirstApp::run()
     {
+        std::vector<std::unique_ptr<NreBuffer>> uboBuffers(NreSwapChain::MAX_FRAMES_IN_FLIGHT);
+        for (int i = 0; i < uboBuffers.size(); i++)
+        {
+            uboBuffers[i] = std::make_unique<NreBuffer>(
+                nreDevice,
+                sizeof(GlobalUbo),
+                1,
+                VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
+                VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT);
+            uboBuffers[i]->map();
+        }
+
         SimpleRenderSystem SimpleRenderSystem{nreDevice, nreRenderer.getSwapChainRenderPass()};
         NreCamera camera{};
         // camera.setViewDirection(glm::vec3(0.f), glm::vec3(1.f, 0.f, 1.f));
@@ -67,8 +87,23 @@ namespace nre
             // ie: multiple renderPass(es) for reflection, shadow, post-processing
             if (auto commandBuffer = nreRenderer.beginFrame())
             {
+                int frameIndex = nreRenderer.getFrameIndex();
+                FrameInfo frameInfo{
+                    frameIndex,
+                    frameTime,
+                    commandBuffer,
+                    camera,
+                };
+
+                // update
+                GlobalUbo ubo{};
+                ubo.projectionView = camera.getProjection() * camera.getView();
+                uboBuffers[frameIndex]->writeToBuffer(&ubo);
+                uboBuffers[frameIndex]->flush();
+
+                // render
                 nreRenderer.beginSwapChainRenderPass(commandBuffer);
-                SimpleRenderSystem.renderGameObjects(commandBuffer, gameObjects, camera);
+                SimpleRenderSystem.renderGameObjects(frameInfo, gameObjects);
                 nreRenderer.endSwapChainRenderPass(commandBuffer);
                 nreRenderer.endFrame();
             }

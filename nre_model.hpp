@@ -1,6 +1,7 @@
 #pragma once
 
 #include "nre_device.hpp"
+#include "nre_buffer.hpp"
 
 #define GLM_FORCE_RADIANS // no matter the system, GLM expects radians
 #define GLM_FORCE_DEPTH_ZERO_TO_ONE
@@ -60,13 +61,11 @@ namespace nre
 
         NreDevice &nreDevice;
 
-        VkBuffer vertexBuffer;
-        VkDeviceMemory vertexBufferMemory;
+        std::unique_ptr<NreBuffer> vertexBuffer;
         uint32_t vertexCount;
 
         bool hasIndexBuffer = false;
-        VkBuffer indexBuffer;
-        VkDeviceMemory indexBufferMemory;
+        std::unique_ptr<NreBuffer> indexBuffer;
         uint32_t indexCount;
     };
 } // namespace nre
