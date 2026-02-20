@@ -4,6 +4,7 @@
 #include "nre_device.hpp"
 #include "nre_game_object.hpp"
 #include "nre_renderer.hpp"
+#include "nre_descriptors.hpp"
 
 // std
 #include <memory>
@@ -32,6 +33,9 @@ namespace nre
         NreWindow nreWindow{WIDTH, HEIGHT, "Nebula Rendering Engine"};
         NreDevice nreDevice{nreWindow};
         NreRenderer nreRenderer{nreWindow, nreDevice};
+
+        // declaration order matters
+        std::unique_ptr<NreDescriptorPool> globalPool{};
         std::vector<NreGameObject> gameObjects;
     };
 

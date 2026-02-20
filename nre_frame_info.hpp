@@ -13,5 +13,6 @@ namespace nre
         float frameTime;
         VkCommandBuffer commandBuffer;
         NreCamera &camera;
+        VkDescriptorSet globalDescriptorSet;
     };
 } // namespace nre

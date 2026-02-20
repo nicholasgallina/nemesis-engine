@@ -16,7 +16,7 @@ namespace nre
     {
 
     public:
-        SimpleRenderSystem(NreDevice &device, VkRenderPass renderPass);
+        SimpleRenderSystem(NreDevice &device, VkRenderPass renderPass, VkDescriptorSetLayout globalSetLayout);
         ~SimpleRenderSystem();
 
         SimpleRenderSystem(const NreWindow &) = delete;
@@ -25,7 +25,7 @@ namespace nre
         void renderGameObjects(FrameInfo &frameInfo, std::vector<NreGameObject> &gameObjects);
 
     private:
-        void createPipelineLayout();
+        void createPipelineLayout(VkDescriptorSetLayout globalSetLayout);
         void createPipeline(VkRenderPass renderPass);
 
         NreDevice &nreDevice;
