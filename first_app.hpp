@@ -36,7 +36,7 @@ namespace nre
 
         // declaration order matters
         std::unique_ptr<NreDescriptorPool> globalPool{};
-        std::vector<NreGameObject> gameObjects;
+        NreGameObject::Map gameObjects;
     };
 
 }

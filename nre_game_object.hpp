@@ -7,6 +7,7 @@
 
 // std
 #include <memory>
+#include <unordered_map>
 
 namespace nre
 {
@@ -30,6 +31,10 @@ namespace nre
     public:
         // "using" keyword invokes in alias; a new name to an existing type
         using id_t = unsigned int;
+
+        // now, game objects can be looked up in constant time with id
+        // not a great solution for ECS
+        using Map = std::unordered_map<id_t, NreGameObject>;
 
         static NreGameObject createGameObject()
         {

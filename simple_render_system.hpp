@@ -22,7 +22,7 @@ namespace nre
         SimpleRenderSystem(const NreWindow &) = delete;
         SimpleRenderSystem &operator=(const NreWindow &) = delete;
 
-        void renderGameObjects(FrameInfo &frameInfo, std::vector<NreGameObject> &gameObjects);
+        void renderGameObjects(FrameInfo &frameInfo);
 
     private:
         void createPipelineLayout(VkDescriptorSetLayout globalSetLayout);
