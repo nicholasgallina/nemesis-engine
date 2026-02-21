@@ -22,7 +22,9 @@ namespace nre
     struct GlobalUbo
     {
         glm::mat4 projectionView{1.f};
-        glm::vec3 lightDirection = glm::normalize(glm::vec3{1.f, -3.f, -1.f});
+        glm::vec4 ambientLightColor{1.f, 1.f, 1.f, .02f};
+        glm::vec4 lightPosition{-1.f};
+        glm::vec4 lightColor{1.f}; // w is light intensity
     };
 
     FirstApp::FirstApp()
@@ -75,6 +77,7 @@ namespace nre
         // won't be rendered
         // used to store camera's current state
         auto viewerObject = NreGameObject::createGameObject();
+        viewerObject.transform.translation.z = -2.5f;
         KeyboardMovementController cameraController{};
 
         auto currentTime = std::chrono::high_resolution_clock::now();
@@ -135,15 +138,22 @@ namespace nre
         std::shared_ptr<NreModel> nreModel = NreModel::createModelFromFile(nreDevice, "models/flat_vase.obj");
         auto flatVase = NreGameObject::createGameObject();
         flatVase.model = nreModel;
-        flatVase.transform.translation = {-.5f, .5f, 2.5f};
+        flatVase.transform.translation = {-.5f, .5f, 0.f};
         flatVase.transform.scale = glm::vec3(3.f);
         gameObjects.push_back(std::move(flatVase));
 
         nreModel = NreModel::createModelFromFile(nreDevice, "models/smooth_vase.obj");
         auto smoothVase = NreGameObject::createGameObject();
         smoothVase.model = nreModel;
-        smoothVase.transform.translation = {.5f, .5f, 2.5f};
+        smoothVase.transform.translation = {.5f, .5f, 0.f};
         smoothVase.transform.scale = glm::vec3(3.f);
         gameObjects.push_back(std::move(smoothVase));
+
+        nreModel = NreModel::createModelFromFile(nreDevice, "models/quad.obj");
+        auto floor = NreGameObject::createGameObject();
+        floor.model = nreModel;
+        floor.transform.translation = {0.f, .5f, 0.f};
+        floor.transform.scale = glm::vec3(3.f, 1.f, 3.f);
+        gameObjects.push_back(std::move(floor));
     };
 } // namspace nre
