@@ -254,19 +254,33 @@ CMakeFiles/NreEngine.dir/src/nre_window.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NreEngine.dir/src/nre_window.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nicholasgallina/Code/nemesis-engine/src/nre_window.cpp -o CMakeFiles/NreEngine.dir/src/nre_window.cpp.s
 
-CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.o: CMakeFiles/NreEngine.dir/flags.make
-CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.o: /Users/nicholasgallina/Code/nemesis-engine/src/simple_render_system.cpp
-CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.o: CMakeFiles/NreEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.o -MF CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.o.d -o CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.o -c /Users/nicholasgallina/Code/nemesis-engine/src/simple_render_system.cpp
+CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.o: CMakeFiles/NreEngine.dir/flags.make
+CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.o: /Users/nicholasgallina/Code/nemesis-engine/src/systems/point_light_system.cpp
+CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.o: CMakeFiles/NreEngine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.o -MF CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.o.d -o CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.o -c /Users/nicholasgallina/Code/nemesis-engine/src/systems/point_light_system.cpp
 
-CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nicholasgallina/Code/nemesis-engine/src/simple_render_system.cpp > CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.i
+CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nicholasgallina/Code/nemesis-engine/src/systems/point_light_system.cpp > CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.i
 
-CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nicholasgallina/Code/nemesis-engine/src/simple_render_system.cpp -o CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.s
+CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nicholasgallina/Code/nemesis-engine/src/systems/point_light_system.cpp -o CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.s
+
+CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.o: CMakeFiles/NreEngine.dir/flags.make
+CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.o: /Users/nicholasgallina/Code/nemesis-engine/src/systems/simple_render_system.cpp
+CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.o: CMakeFiles/NreEngine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.o -MF CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.o.d -o CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.o -c /Users/nicholasgallina/Code/nemesis-engine/src/systems/simple_render_system.cpp
+
+CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nicholasgallina/Code/nemesis-engine/src/systems/simple_render_system.cpp > CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.i
+
+CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nicholasgallina/Code/nemesis-engine/src/systems/simple_render_system.cpp -o CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.s
 
 # Object files for target NreEngine
 NreEngine_OBJECTS = \
@@ -283,7 +297,8 @@ NreEngine_OBJECTS = \
 "CMakeFiles/NreEngine.dir/src/nre_renderer.cpp.o" \
 "CMakeFiles/NreEngine.dir/src/nre_swap_chain.cpp.o" \
 "CMakeFiles/NreEngine.dir/src/nre_window.cpp.o" \
-"CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.o"
+"CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.o" \
+"CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.o"
 
 # External object files for target NreEngine
 NreEngine_EXTERNAL_OBJECTS =
@@ -301,12 +316,13 @@ NreEngine: CMakeFiles/NreEngine.dir/src/nre_pipeline.cpp.o
 NreEngine: CMakeFiles/NreEngine.dir/src/nre_renderer.cpp.o
 NreEngine: CMakeFiles/NreEngine.dir/src/nre_swap_chain.cpp.o
 NreEngine: CMakeFiles/NreEngine.dir/src/nre_window.cpp.o
-NreEngine: CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.o
+NreEngine: CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.o
+NreEngine: CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.o
 NreEngine: CMakeFiles/NreEngine.dir/build.make
 NreEngine: /opt/homebrew/lib/libglfw.3.4.dylib
 NreEngine: /usr/local/lib/libvulkan.dylib
 NreEngine: CMakeFiles/NreEngine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable NreEngine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable NreEngine"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/NreEngine.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

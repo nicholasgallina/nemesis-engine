@@ -1,4 +1,6 @@
 # Hashes of file build rules.
+97cc1f899fcf2af296c15ca63b4ffe70 /Users/nicholasgallina/Code/nemesis-engine/shaders/point_light.frag.spv
+b95847c811217271fa7a541ff48c6358 /Users/nicholasgallina/Code/nemesis-engine/shaders/point_light.vert.spv
 f3b939085692d950c9a8737c24d2d3db /Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.frag.spv
 60f585257e86da3e90d3ce21c0e3f5dd /Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.vert.spv
 a3e6d82b760345306706b5da713f5398 CMakeFiles/Shaders

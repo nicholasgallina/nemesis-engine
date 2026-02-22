@@ -21,7 +21,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/nicholasgallina/Code/nemesis-engine/src/nre_renderer.cpp" "CMakeFiles/NreEngine.dir/src/nre_renderer.cpp.o" "gcc" "CMakeFiles/NreEngine.dir/src/nre_renderer.cpp.o.d"
   "/Users/nicholasgallina/Code/nemesis-engine/src/nre_swap_chain.cpp" "CMakeFiles/NreEngine.dir/src/nre_swap_chain.cpp.o" "gcc" "CMakeFiles/NreEngine.dir/src/nre_swap_chain.cpp.o.d"
   "/Users/nicholasgallina/Code/nemesis-engine/src/nre_window.cpp" "CMakeFiles/NreEngine.dir/src/nre_window.cpp.o" "gcc" "CMakeFiles/NreEngine.dir/src/nre_window.cpp.o.d"
-  "/Users/nicholasgallina/Code/nemesis-engine/src/simple_render_system.cpp" "CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.o" "gcc" "CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.o.d"
+  "/Users/nicholasgallina/Code/nemesis-engine/src/systems/point_light_system.cpp" "CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.o" "gcc" "CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.o.d"
+  "/Users/nicholasgallina/Code/nemesis-engine/src/systems/simple_render_system.cpp" "CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.o" "gcc" "CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

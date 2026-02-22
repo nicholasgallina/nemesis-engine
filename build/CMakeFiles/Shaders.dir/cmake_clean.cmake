@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "/Users/nicholasgallina/Code/nemesis-engine/shaders/point_light.frag.spv"
+  "/Users/nicholasgallina/Code/nemesis-engine/shaders/point_light.vert.spv"
   "/Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.frag.spv"
   "/Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.vert.spv"
   "CMakeFiles/Shaders"

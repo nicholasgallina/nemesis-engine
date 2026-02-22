@@ -454,29 +454,53 @@ src/nre_window.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NreEngine.dir/build.make CMakeFiles/NreEngine.dir/src/nre_window.cpp.s
 .PHONY : src/nre_window.cpp.s
 
-src/simple_render_system.o: src/simple_render_system.cpp.o
-.PHONY : src/simple_render_system.o
+src/systems/point_light_system.o: src/systems/point_light_system.cpp.o
+.PHONY : src/systems/point_light_system.o
 
 # target to build an object file
-src/simple_render_system.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NreEngine.dir/build.make CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.o
-.PHONY : src/simple_render_system.cpp.o
+src/systems/point_light_system.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NreEngine.dir/build.make CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.o
+.PHONY : src/systems/point_light_system.cpp.o
 
-src/simple_render_system.i: src/simple_render_system.cpp.i
-.PHONY : src/simple_render_system.i
+src/systems/point_light_system.i: src/systems/point_light_system.cpp.i
+.PHONY : src/systems/point_light_system.i
 
 # target to preprocess a source file
-src/simple_render_system.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NreEngine.dir/build.make CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.i
-.PHONY : src/simple_render_system.cpp.i
+src/systems/point_light_system.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NreEngine.dir/build.make CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.i
+.PHONY : src/systems/point_light_system.cpp.i
 
-src/simple_render_system.s: src/simple_render_system.cpp.s
-.PHONY : src/simple_render_system.s
+src/systems/point_light_system.s: src/systems/point_light_system.cpp.s
+.PHONY : src/systems/point_light_system.s
 
 # target to generate assembly for a file
-src/simple_render_system.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NreEngine.dir/build.make CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.s
-.PHONY : src/simple_render_system.cpp.s
+src/systems/point_light_system.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NreEngine.dir/build.make CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.s
+.PHONY : src/systems/point_light_system.cpp.s
+
+src/systems/simple_render_system.o: src/systems/simple_render_system.cpp.o
+.PHONY : src/systems/simple_render_system.o
+
+# target to build an object file
+src/systems/simple_render_system.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NreEngine.dir/build.make CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.o
+.PHONY : src/systems/simple_render_system.cpp.o
+
+src/systems/simple_render_system.i: src/systems/simple_render_system.cpp.i
+.PHONY : src/systems/simple_render_system.i
+
+# target to preprocess a source file
+src/systems/simple_render_system.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NreEngine.dir/build.make CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.i
+.PHONY : src/systems/simple_render_system.cpp.i
+
+src/systems/simple_render_system.s: src/systems/simple_render_system.cpp.s
+.PHONY : src/systems/simple_render_system.s
+
+# target to generate assembly for a file
+src/systems/simple_render_system.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NreEngine.dir/build.make CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.s
+.PHONY : src/systems/simple_render_system.cpp.s
 
 # Help Target
 help:
@@ -527,9 +551,12 @@ help:
 	@echo "... src/nre_window.o"
 	@echo "... src/nre_window.i"
 	@echo "... src/nre_window.s"
-	@echo "... src/simple_render_system.o"
-	@echo "... src/simple_render_system.i"
-	@echo "... src/simple_render_system.s"
+	@echo "... src/systems/point_light_system.o"
+	@echo "... src/systems/point_light_system.i"
+	@echo "... src/systems/point_light_system.s"
+	@echo "... src/systems/simple_render_system.o"
+	@echo "... src/systems/simple_render_system.i"
+	@echo "... src/systems/simple_render_system.s"
 .PHONY : help
 
 

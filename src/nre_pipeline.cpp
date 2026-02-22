@@ -102,11 +102,9 @@ void NrePipeline::createGraphicsPipeline(const std::string &vertFilepath,
   shaderStages[1].pNext = nullptr;
   shaderStages[1].pSpecializationInfo = nullptr;
 
-  // here's a buffer, here's how to step through it
-  auto bindingDescriptions = NreModel::Vertex::getBindingDescriptions();
+  auto &bindingDescriptions = configInfo.bindingDescriptions;
+  auto &attributeDescriptions = configInfo.attributeDescriptions;
 
-  // here's where each field lives within a vertex
-  auto attributeDescriptions = NreModel::Vertex::getAttributeDescriptions();
   VkPipelineVertexInputStateCreateInfo vertexInputInfo{};
   vertexInputInfo.sType =
       VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
@@ -267,6 +265,10 @@ void NrePipeline::defaultPipelineConfigInfo(PipelineConfigInfo &configInfo) {
   configInfo.dynamicStateInfo.dynamicStateCount =
       static_cast<uint32_t>(configInfo.dynamicStateEnables.size());
   configInfo.dynamicStateInfo.flags = 0;
+
+  configInfo.bindingDescriptions = NreModel::Vertex::getBindingDescriptions();
+  configInfo.attributeDescriptions =
+      NreModel::Vertex::getAttributeDescriptions();
 }
 
 } // namespace nre

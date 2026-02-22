@@ -13,7 +13,8 @@ layout(location = 1) out vec3 fragPosWorld;
 layout(location = 2) out vec3 fragNormalWorld;
 
 layout(set = 0, binding = 0)  uniform GlobalUbo {
-    mat4 projectionViewMatrix;
+    mat4 projection;
+    mat4 view;
     vec4 ambientLightColor;
     vec4 lightPosition;
     vec4 lightColor;
@@ -30,7 +31,7 @@ const float AMBIENT = 0.02;
 
 void main() {
     vec4 positionWorld = push.modelMatrix * vec4(position, 1.0);
-    gl_Position = ubo.projectionViewMatrix * positionWorld;
+    gl_Position = ubo.projection * ubo.view * positionWorld;
     // push.transform * position != position * push.transform
     // as matrix multiplication is not commutative
     //gl_Position = vec4(push.transform * position + push.offset, 0.0, 1.0);

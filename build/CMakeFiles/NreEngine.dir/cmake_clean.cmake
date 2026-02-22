@@ -25,8 +25,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/NreEngine.dir/src/nre_swap_chain.cpp.o.d"
   "CMakeFiles/NreEngine.dir/src/nre_window.cpp.o"
   "CMakeFiles/NreEngine.dir/src/nre_window.cpp.o.d"
-  "CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.o"
-  "CMakeFiles/NreEngine.dir/src/simple_render_system.cpp.o.d"
+  "CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.o"
+  "CMakeFiles/NreEngine.dir/src/systems/point_light_system.cpp.o.d"
+  "CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.o"
+  "CMakeFiles/NreEngine.dir/src/systems/simple_render_system.cpp.o.d"
   "NreEngine"
   "NreEngine.pdb"
 )

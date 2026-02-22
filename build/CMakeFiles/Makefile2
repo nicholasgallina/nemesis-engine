@@ -86,12 +86,12 @@ clean: CMakeFiles/Shaders.dir/clean
 CMakeFiles/NreEngine.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NreEngine.dir/build.make CMakeFiles/NreEngine.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NreEngine.dir/build.make CMakeFiles/NreEngine.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Built target NreEngine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 "Built target NreEngine"
 .PHONY : CMakeFiles/NreEngine.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/NreEngine.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles 16
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/NreEngine.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles 0
 .PHONY : CMakeFiles/NreEngine.dir/rule
@@ -103,7 +103,7 @@ NreEngine: CMakeFiles/NreEngine.dir/rule
 # codegen rule for target.
 CMakeFiles/NreEngine.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NreEngine.dir/build.make CMakeFiles/NreEngine.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Finished codegen for target NreEngine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 "Finished codegen for target NreEngine"
 .PHONY : CMakeFiles/NreEngine.dir/codegen
 
 # clean rule for target.
@@ -118,12 +118,12 @@ CMakeFiles/NreEngine.dir/clean:
 CMakeFiles/Shaders.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Shaders.dir/build.make CMakeFiles/Shaders.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Shaders.dir/build.make CMakeFiles/Shaders.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles --progress-num=16,17 "Built target Shaders"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles --progress-num=17,18,19,20 "Built target Shaders"
 .PHONY : CMakeFiles/Shaders.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Shaders.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Shaders.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles 0
 .PHONY : CMakeFiles/Shaders.dir/rule
@@ -135,7 +135,7 @@ Shaders: CMakeFiles/Shaders.dir/rule
 # codegen rule for target.
 CMakeFiles/Shaders.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Shaders.dir/build.make CMakeFiles/Shaders.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles --progress-num=16,17 "Finished codegen for target Shaders"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles --progress-num=17,18,19,20 "Finished codegen for target Shaders"
 .PHONY : CMakeFiles/Shaders.dir/codegen
 
 # clean rule for target.

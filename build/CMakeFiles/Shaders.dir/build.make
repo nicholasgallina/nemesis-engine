@@ -66,21 +66,33 @@ include CMakeFiles/Shaders.dir/compiler_depend.make
 # Include the progress variables for this target.
 include CMakeFiles/Shaders.dir/progress.make
 
+CMakeFiles/Shaders: /Users/nicholasgallina/Code/nemesis-engine/shaders/point_light.frag.spv
+CMakeFiles/Shaders: /Users/nicholasgallina/Code/nemesis-engine/shaders/point_light.vert.spv
 CMakeFiles/Shaders: /Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.frag.spv
 CMakeFiles/Shaders: /Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.vert.spv
 
+/Users/nicholasgallina/Code/nemesis-engine/shaders/point_light.frag.spv: /Users/nicholasgallina/Code/nemesis-engine/shaders/point_light.frag
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating /Users/nicholasgallina/Code/nemesis-engine/shaders/point_light.frag.spv"
+	/usr/local/bin/glslangValidator -V /Users/nicholasgallina/Code/nemesis-engine/shaders/point_light.frag -o /Users/nicholasgallina/Code/nemesis-engine/shaders/point_light.frag.spv
+
+/Users/nicholasgallina/Code/nemesis-engine/shaders/point_light.vert.spv: /Users/nicholasgallina/Code/nemesis-engine/shaders/point_light.vert
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating /Users/nicholasgallina/Code/nemesis-engine/shaders/point_light.vert.spv"
+	/usr/local/bin/glslangValidator -V /Users/nicholasgallina/Code/nemesis-engine/shaders/point_light.vert -o /Users/nicholasgallina/Code/nemesis-engine/shaders/point_light.vert.spv
+
 /Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.frag.spv: /Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.frag
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating /Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.frag.spv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating /Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.frag.spv"
 	/usr/local/bin/glslangValidator -V /Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.frag -o /Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.frag.spv
 
 /Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.vert.spv: /Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.vert
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating /Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.vert.spv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating /Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.vert.spv"
 	/usr/local/bin/glslangValidator -V /Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.vert -o /Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.vert.spv
 
 CMakeFiles/Shaders.dir/codegen:
 .PHONY : CMakeFiles/Shaders.dir/codegen
 
 Shaders: CMakeFiles/Shaders
+Shaders: /Users/nicholasgallina/Code/nemesis-engine/shaders/point_light.frag.spv
+Shaders: /Users/nicholasgallina/Code/nemesis-engine/shaders/point_light.vert.spv
 Shaders: /Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.frag.spv
 Shaders: /Users/nicholasgallina/Code/nemesis-engine/shaders/simple_shader.vert.spv
 Shaders: CMakeFiles/Shaders.dir/build.make
