@@ -21,6 +21,8 @@ public:
   PointLightSystem(const NreWindow &) = delete;
   PointLightSystem &operator=(const NreWindow &) = delete;
 
+  void update(FrameInfo &frameInfo, GlobalUbo &ubo);
+
   void render(FrameInfo &frameInfo);
 
 private:

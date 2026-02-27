@@ -1,0 +1,4 @@
+/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles/NreEngine.dir
+/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles/Shaders.dir
+/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles/edit_cache.dir
+/Users/nicholasgallina/Code/nemesis-engine/build/CMakeFiles/rebuild_cache.dir
