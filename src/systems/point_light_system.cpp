@@ -7,6 +7,7 @@
 
 // std
 #include <array>
+#include <map>
 #include <stdexcept>
 
 namespace colors {
@@ -57,16 +58,17 @@ void PointLightSystem::createPipelineLayout(
   pipelineLayoutInfo.pPushConstantRanges = &pushConstantRange;
   if (vkCreatePipelineLayout(nreDevice.device(), &pipelineLayoutInfo, nullptr,
                              &pipelineLayout) != VK_SUCCESS) {
-    throw std::runtime_error("Failed to create pipeline layout");
+    throw std::runtime_error("FAILED to create PIPELINE_LAYOUT");
   }
 };
 
 void PointLightSystem::createPipeline(VkRenderPass renderPass) {
   assert(pipelineLayout != nullptr &&
-         "Cannot create pipeline before Pipeline layout");
+         "CANNOT create PIPELINE before PIPELINE_LAYOUT");
 
   PipelineConfigInfo pipelineConfig{};
   NrePipeline::defaultPipelineConfigInfo(pipelineConfig);
+  NrePipeline::enableAlphaBlending(pipelineConfig);
   pipelineConfig.attributeDescriptions.clear();
   pipelineConfig.bindingDescriptions.clear();
   pipelineConfig.renderPass = renderPass;
@@ -105,16 +107,29 @@ void PointLightSystem::update(FrameInfo &frameInfo, GlobalUbo &ubo) {
 };
 
 void PointLightSystem::render(FrameInfo &frameInfo) {
+  // sort lights
+  std::map<float, NreGameObject::id_t> sorted;
+  for (auto &kv : frameInfo.gameObjects) {
+    auto &obj = kv.second;
+    if (obj.pointLight == nullptr)
+      continue;
+
+    // calculate distance
+    auto offset = frameInfo.camera.getPosition() - obj.transform.translation;
+    float disSquared = glm::dot(offset, offset);
+    sorted[disSquared] = obj.getId();
+  }
+
   nrePipeline->bind(frameInfo.commandBuffer);
 
   vkCmdBindDescriptorSets(frameInfo.commandBuffer,
                           VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 0, 1,
                           &frameInfo.globalDescriptorSet, 0, nullptr);
 
-  for (auto &kv : frameInfo.gameObjects) {
-    auto &obj = kv.second;
-    if (obj.pointLight == nullptr)
-      continue;
+  // iterate through sorted lights in reverse order
+  for (auto it = sorted.rbegin(); it != sorted.rend(); ++it) {
+    // use game obj id to find light obj
+    auto &obj = frameInfo.gameObjects.at(it->second);
 
     PointLightPushConstants push{};
     push.position = glm::vec4(obj.transform.translation, 1.f);

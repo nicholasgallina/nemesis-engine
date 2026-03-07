@@ -120,8 +120,12 @@ void FirstApp::run() {
 
       // render
       nreRenderer.beginSwapChainRenderPass(commandBuffer);
+
+      // simple render system must be called before point light system
+      // solid objects -> semi-transparent objects
       SimpleRenderSystem.renderGameObjects(frameInfo);
       pointLightSystem.render(frameInfo);
+
       nreRenderer.endSwapChainRenderPass(commandBuffer);
       nreRenderer.endFrame();
     }

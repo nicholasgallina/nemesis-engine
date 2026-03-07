@@ -271,4 +271,23 @@ void NrePipeline::defaultPipelineConfigInfo(PipelineConfigInfo &configInfo) {
       NreModel::Vertex::getAttributeDescriptions();
 }
 
+void NrePipeline::enableAlphaBlending(PipelineConfigInfo &configInfo) {
+  configInfo.colorBlendAttachment.blendEnable = VK_TRUE;
+  configInfo.colorBlendAttachment.colorWriteMask =
+      VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_G_BIT |
+      VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_A_BIT;
+  configInfo.colorBlendAttachment.srcColorBlendFactor =
+      VK_BLEND_FACTOR_SRC_ALPHA;
+  configInfo.colorBlendAttachment.dstColorBlendFactor =
+      VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA;
+  configInfo.colorBlendAttachment.colorBlendOp =
+      VK_BLEND_OP_ADD; // these values are being added together
+  configInfo.colorBlendAttachment.srcAlphaBlendFactor =
+      VK_BLEND_FACTOR_ONE; // x
+  configInfo.colorBlendAttachment.dstAlphaBlendFactor =
+      VK_BLEND_FACTOR_ZERO;                                       // x
+  configInfo.colorBlendAttachment.alphaBlendOp = VK_BLEND_OP_ADD; // x
+  // fields marked x needed bc not checking distance at any point
+}
+
 } // namespace nre

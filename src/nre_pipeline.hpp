@@ -14,6 +14,7 @@ namespace nre {
 
 // PipelineConfigInfo struct: all the settings for pipeline behavior
 struct PipelineConfigInfo {
+  PipelineConfigInfo() = default;
   PipelineConfigInfo(const PipelineConfigInfo &) = delete;
   PipelineConfigInfo &operator=(const PipelineConfigInfo &) = delete;
 
@@ -84,6 +85,7 @@ public:
 
   // passing by reference avoids copying a big struct
   static void defaultPipelineConfigInfo(PipelineConfigInfo &configInfo);
+  static void enableAlphaBlending(PipelineConfigInfo &configInfo);
 
 private:
   // reads shader bytcode from disk
